@@ -34,7 +34,7 @@ opt.undofile = true
 opt.backspace = "indent,eol,start"
 opt.splitright = true
 opt.splitbelow = true
-opt.autodir = false
+opt.autochdir = false
 opt.iskeyword:append("-")
 opt.mouse:append("a")
 opt.clipboard:append("unnamedplus")
