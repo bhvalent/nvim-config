@@ -20,7 +20,7 @@ local opts = {
 		lazy = true,
 	},
 	install = {
-		colorscheme = { "one_monokai" }
+    colorscheme = { "one_monokai" }
 	},
 	rtp = {
 		disabled_plugins = {
