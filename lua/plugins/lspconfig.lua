@@ -1,7 +1,9 @@
 local on_attach = require("utils.lsp").on_attach
 
 local config = function()
+	local cmp_nvim_lsp = require("cmp_nvim_lsp")
 	local lspconfig = require("lspconfig")
+	local capabilities = cmp_nvim_lsp.default_capabilities()
 	local signs = { Error = " ", Warn = " ", Hint = "?", Info = "" }
 
 	for type, icon in pairs(signs) do
@@ -11,7 +13,7 @@ local config = function()
 
 	-- lua
 	lspconfig.lua_ls.setup({
-		-- capabilities = capabilities,
+		capabilities = capabilities,
 		on_attach = on_attach,
 		settings = {
 			Lua = {
@@ -47,7 +49,7 @@ local config = function()
 		},
 		settings = {
 			languages = {
-				lua = { stylua }
+				lua = { stylua },
 			},
 		},
 	})
@@ -76,6 +78,9 @@ return {
 		"windwp/nvim-autopairs",
 		"williamboman/mason.nvim",
 		"creativenull/efmls-configs-nvim",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lsp"
 	},
 }
 
