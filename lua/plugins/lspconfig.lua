@@ -32,25 +32,25 @@ local config = function()
 		},
 	})
 
-  -- typescript
-  lspconfig.tsserver.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = {
-      "typescript"
-    },
-    root_dir = lspconfig.util.root_pattern("package.json", "tsconfig", ".git")
-  })
+	-- typescript
+	lspconfig.tsserver.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		filetypes = {
+			"typescript",
+		},
+		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig", ".git"),
+	})
 
 	local stylua = require("efmls-configs.formatters.stylua")
-  local eslint_d = require("efmls-configs.linters.eslint_d")
-  local prettierd = require("efmls-configs.formatters.prettier_d")
+	local eslint_d = require("efmls-configs.linters.eslint_d")
+	local prettierd = require("efmls-configs.formatters.prettier_d")
 
 	-- configure efm server
 	lspconfig.efm.setup({
 		filetypes = {
 			"lua",
-      "typescript"
+			"typescript",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -63,24 +63,9 @@ local config = function()
 		settings = {
 			languages = {
 				lua = { stylua },
-        typescript = { eslint_d, prettierd }
+				typescript = { eslint_d, prettierd },
 			},
 		},
-	})
-
-	-- Format on Save
-	local lsp_fmt_group = vim.api.nvim_create_augroup("LspFormattingGroup", {})
-	vim.api.nvim_create_autocmd("BufWritePost", {
-		group = lsp_fmt_group,
-		callback = function()
-			local efm = vim.lsp.get_active_clients({ name = "efm" })
-
-			if vim.tbl_isempty(efm) then
-				return
-			end
-
-			vim.lsp.buf.format({ name = "efm" })
-		end,
 	})
 end
 
@@ -92,9 +77,9 @@ return {
 		"windwp/nvim-autopairs",
 		"williamboman/mason.nvim",
 		"creativenull/efmls-configs-nvim",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp"
+		"hrsh7th/nvim-cmp",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-nvim-lsp",
 	},
 }
 
