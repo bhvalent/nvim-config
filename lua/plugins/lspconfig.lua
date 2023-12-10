@@ -32,12 +32,25 @@ local config = function()
 		},
 	})
 
+  -- typescript
+  lspconfig.tsserver.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {
+      "typescript"
+    },
+    root_dir = lspconfig.util.root_pattern("package.json", "tsconfig", ".git")
+  })
+
 	local stylua = require("efmls-configs.formatters.stylua")
+  local eslint_d = require("efmls-configs.linters.eslint_d")
+  local prettierd = require("efmls-configs.formatters.prettier_d")
 
 	-- configure efm server
 	lspconfig.efm.setup({
 		filetypes = {
 			"lua",
+      "typescript"
 		},
 		init_options = {
 			documentFormatting = true,
@@ -50,6 +63,7 @@ local config = function()
 		settings = {
 			languages = {
 				lua = { stylua },
+        typescript = { eslint_d, prettierd }
 			},
 		},
 	})
