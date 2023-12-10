@@ -1,6 +1,6 @@
 local config = function()
 	local lspconfig = require("lspconfig")
-	local signs = { Error = " ", Warn = " ", Hint = "󱧤", Info = "" }
+	local signs = { Error = " ", Warn = " ", Hint = "?", Info = "" }
 
 	for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
@@ -12,7 +12,7 @@ local config = function()
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
     -- set keybindsmapkey("<leader>fd", "Lspsaga finder", "n", opts) -- go to definition
-    vim.keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references 
+    vim.keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references 
     vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- go to declaration
     vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
     vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
@@ -63,7 +63,7 @@ local config = function()
 		},
 		settings = {
 			languages = {
-				lua = { stylua },
+				lua = { stylua }
 			},
 		},
 	})

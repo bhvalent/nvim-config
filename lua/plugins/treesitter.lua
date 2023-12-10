@@ -24,7 +24,9 @@ local config = function()
       "gowork",
       "regex",
       "sql",
-      "xml"
+      "xml",
+      "yaml",
+      "toml"
     },
     auto_intall = true,
     highlight = {

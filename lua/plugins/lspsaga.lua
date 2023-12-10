@@ -16,7 +16,7 @@ return {
 			code_action = {
         keys = {
           -- use escape to exit code action float window instead of q
-          quit = "<Esc>",
+          -- quit = "<Esc>",
         },
       }
 		})
