@@ -23,3 +23,6 @@ vim.api.nvim_set_keymap("v", "<c-_>", "gcc", { noremap = false })
 -- Indenting
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
+
+-- Git
+keymap.set("n", "<leader>G", "<cmd>Git<CR>", opts) -- open git fugitive
