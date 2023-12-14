@@ -25,4 +25,7 @@ keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
 
 -- Git
-keymap.set("n", "<leader>G", "<cmd>Git<CR>", opts) -- open git fugitive
+keymap.set("n", "<leader>Gc", "<cmd>DiffviewOpen<CR>", opts) -- open git changes
+keymap.set("n", "<leader>Gh", "<cmd>DiffviewFileHistory<CR>", opts) -- open git history
+keymap.set("n", "<leader>Gfh", "<cmd>DiffviewFileHistory %<CR>", opts) -- open git history for current file
+keymap.set("n", "<leader>Gq", "<cmd>DiffviewClose<CR>", opts) -- close git
