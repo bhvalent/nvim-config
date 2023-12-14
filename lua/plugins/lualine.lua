@@ -1,9 +1,7 @@
 local config = function()
-  local theme = require('lualine.themes.onedark')
-
   require('lualine').setup {
     options = {
-      theme = theme,
+      theme = "tokyonight",
       globalstatus = true
     },
     sections = {
