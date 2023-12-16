@@ -42,15 +42,43 @@ local config = function()
 		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig", ".git"),
 	})
 
+	-- Golang
+	lspconfig.gopls.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		filetypes = {
+			"go",
+			"gomod",
+			"gowork",
+			"gotmpl",
+		},
+		root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+		settings = {
+			gopls = {
+				completeUnimported = true,
+				usePlaceholders = true,
+				analyses = {
+					unusedparams = true,
+				},
+			},
+		},
+	})
+
 	local stylua = require("efmls-configs.formatters.stylua")
 	local eslint_d = require("efmls-configs.linters.eslint_d")
 	local prettierd = require("efmls-configs.formatters.prettier_d")
+	local gofumpt = require("efmls-configs.formatters.gofumpt")
+	local goimports = require("efmls-configs.formatters.goimports")
 
 	-- configure efm server
 	lspconfig.efm.setup({
 		filetypes = {
 			"lua",
 			"typescript",
+			"go",
+			"gomod",
+			"gowork",
+			"gotmpl",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -64,6 +92,10 @@ local config = function()
 			languages = {
 				lua = { stylua },
 				typescript = { eslint_d, prettierd },
+				go = { gofumpt, goimports },
+				gomod = { gofumpt, goimports },
+				gowork = { gofumpt, goimports },
+				gotmpl = { gofumpt, goimports },
 			},
 		},
 	})
