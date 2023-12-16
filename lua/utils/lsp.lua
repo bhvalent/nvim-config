@@ -22,6 +22,18 @@ lspUtils.on_attach = function(client, bufnr)
   -- if client.name == "pyright" then
   --   keymap.set(...)
   -- end
+
+  if client.name == "gopls" then
+    local dap = require("dap")
+    keymap.set("n", "<leader>db", dap.toggle_breakpoint, opts) -- toggle breakpoint
+    keymap.set("n", "<F5>", dap.continue, opts) -- continue/invoke debugger
+    keymap.set("n", "<F10>", dap.step_over, opts) -- step over
+    keymap.set("n", "<F11>", dap.step_into, opts) -- step into
+    keymap.set("n", "<F12>", dap.step_out, opts) -- step out
+
+    local dapgo = require("dap-go")
+    keymap.set("n", "<leader>dt", dapgo.debug_test, opts) -- debug test
+  end
 end
 
 return lspUtils

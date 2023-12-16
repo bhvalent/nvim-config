@@ -1,10 +1,10 @@
 local on_attach = require("utils.lsp").on_attach
+local signs = require("utils.icons").diagnostic_signs
 
 local config = function()
 	local cmp_nvim_lsp = require("cmp_nvim_lsp")
 	local lspconfig = require("lspconfig")
 	local capabilities = cmp_nvim_lsp.default_capabilities()
-	local signs = { Error = " ", Warn = " ", Hint = "?", Info = "" }
 
 	for type, icon in pairs(signs) do
 		local hl = "DiagnosticSign" .. type
